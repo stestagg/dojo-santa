@@ -11,7 +11,7 @@ def get_users():
 def update_users(data):
     current_directory = os.path.dirname(__file__)
     users_db = os.path.join(current_directory, 'users.json')
-    with open(users_db, "wb") as fh:
+    with open(users_db, "w") as fh:
         return json.dump(data, fh)
 
 def get_undrawn_users():
@@ -68,7 +68,7 @@ def remove(name):
 
 
 if __name__ == "__main__":
-    print get_users()
-    print get_undrawn_users()
-    print assign("matt")
-    print get_undrawn_users()
+    print(get_users())
+    print(get_undrawn_users())
+    print(assign("matt"))
+    print(get_undrawn_users())
