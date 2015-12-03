@@ -14,6 +14,12 @@ def update_users(data):
         return json.dump(data, fh)
 
 
+def get_unassigned_users():
+    users = get_users()
+    from_users = users.keys()
+    to_users = users.values()
+    return set(from_users) - set(to_users)
+
 def add(name):
     users = get_users()
     if name in users:
@@ -37,7 +43,5 @@ def remove(name):
 
 if __name__ == "__main__":
     print get_users()
-    add("bill")
     print get_users()
-    remove("matt")
-    print get_users()
+    print get_unassigned_users()
