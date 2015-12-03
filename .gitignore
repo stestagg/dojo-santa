@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 
+users.json
 # C extensions
 *.so
 
