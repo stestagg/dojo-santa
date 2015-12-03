@@ -1,5 +1,1 @@
-{
-  "matt": null,
-  "bob": null,
-  "lisa": null
-}
+{"lisa": null, "matt": null, "bob": "lisa"}

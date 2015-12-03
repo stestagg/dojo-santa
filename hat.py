@@ -1,5 +1,6 @@
 import os
 import json
+import random
 
 def get_users():
     current_directory = os.path.dirname(__file__)
@@ -29,7 +30,19 @@ def add(name):
 
 
 def assign(name):
-    pass
+    users = get_users()
+    if users[name] is not None:
+        return users[name]
+    unassigned = get_unassigned_users()
+    if name in unassigned:
+        unassigned.remove(name)
+    unassigned = list(unassigned)
+    random.shuffle(unassigned)
+    partner = unassigned[0]
+    users[name] = partner
+    update_users(users)
+    return partner
+
 
 def remove(name):
     users = get_users()
@@ -39,9 +52,10 @@ def remove(name):
     for key, value in users.items():
         if value == name:
             users[key] = None
-    update_users(users)   
+    update_users(users)
+
 
 if __name__ == "__main__":
     print get_users()
     print get_users()
-    print get_unassigned_users()
+    print assign("bob")
