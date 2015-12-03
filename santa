@@ -19,16 +19,17 @@ def add(names):
 
 @santa.command()
 def list():
-    users = hat.get_all_users()
-    for username in users:
-        click.echo('%s' % username)
+    names = hat.get_undrawn_users()
+    click.echo("Undrawn users: ")
+    for name in names:
+        click.echo('{}'.format(name))
 
 
 @santa.command()
 @click.option('--name')
 def draw(name):
-    drawn_name = hat.remove(name)
-    click.echo('%s drew %s from the hat!' % name, drawn_name)
+    drawn_name = hat.assign(name)
+    click.echo('{} drew {} from the hat!'.format(name, drawn_name))
 
 if __name__ == '__main__':
     santa()
