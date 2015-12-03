@@ -46,6 +46,16 @@ def assign(name):
     return partner
 
 
+def ready_to_give_gifts():
+    users = get_users()
+    if len(get_undrawn_users()) != 0:
+        return False
+
+    if len(get_unassigned_users()):
+        raise ValueError("Uneven number of users")
+    return True
+
+
 def remove(name):
     users = get_users()
     if name not in users:
