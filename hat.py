@@ -14,6 +14,8 @@ def update_users(data):
     with open(users_db, "wb") as fh:
         return json.dump(data, fh)
 
+def get_undrawn_users():
+    return [k for k, v in get_users().items() if v is None]
 
 def get_unassigned_users():
     users = get_users()
@@ -57,5 +59,6 @@ def remove(name):
 
 if __name__ == "__main__":
     print get_users()
-    print get_users()
-    print assign("bob")
+    print get_undrawn_users()
+    print assign("matt")
+    print get_undrawn_users()
